@@ -1,0 +1,600 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
+
+/* ──────────────────────────────────────────────────────
+   CAMPUS CUPIDS — Heartlink Theme (STRICT)
+   Deep Burgundy/Wine + Neon Crimson + Emotions
+   ────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Heartlink Exact Palette ── */
+  --bg-dark: #0d0d0d;
+  --bg-wine: #1a0a10;
+  --card-bg: rgba(26, 16, 20, 0.85);
+  --card-bg-solid: #1c1218;
+  --accent: #ff3b5c;
+  --accent-bright: #ff6b81;
+  --accent-dim: rgba(255, 59, 92, 0.12);
+  --accent-glow: rgba(255, 59, 92, 0.4);
+  --accent-subtle: rgba(255, 59, 92, 0.06);
+  --text-main: #ffffff;
+  --text-muted: #8a8a9a;
+  --text-soft: #6a6a7a;
+  --border: rgba(255, 59, 92, 0.08);
+  --border-hover: rgba(255, 59, 92, 0.25);
+  --gold: #fbbf24;
+  --gold-dim: rgba(251, 191, 36, 0.1);
+}
+
+@theme {
+  --color-accent-400: #ff3b5c;
+  --color-accent-500: #ff1744;
+  --color-accent-600: #e6002e;
+  --color-accent-700: #c10027;
+  --color-ruby-400: #ff3b5c;
+  --color-ruby-500: #ff1744;
+  --color-ruby-600: #e6002e;
+  --color-ruby-700: #c10027;
+  --color-dark-950: #0d0d0d;
+  --color-dark-900: #121015;
+  --color-dark-800: #1c1218;
+  --color-dark-700: #261a20;
+  --color-dark-600: #2d2028;
+  --color-dark-500: #3a2a32;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+/* ── Base ── */
+@layer base {
+  :root {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a0a10 0%, #0d0d0d 40%, #0a0a0f 100%);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--accent-dim);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 59, 92, 0.15);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 59, 92, 0.3);
+  }
+}
+
+/* ── Utilities ── */
+@layer utilities {
+
+  /* ── Glass Cards ── */
+  .glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .glass-card:hover {
+    border-color: var(--border-hover);
+    box-shadow:
+      0 0 20px rgba(255, 59, 92, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-hover {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
+
+  .glass-card-hover:hover {
+    border-color: var(--accent);
+    box-shadow:
+      0 0 30px var(--accent-glow),
+      0 16px 50px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* ── Glass Navbar ── */
+  .glass-nav {
+    background: rgba(13, 10, 16, 0.88);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Text Gradient ── */
+  .text-gradient-ruby {
+    background: linear-gradient(135deg, #ff3b5c 0%, #ff6b81 50%, #ff3b5c 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-text 4s ease-in-out infinite;
+  }
+
+  /* ── Pill Buttons ── */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, #e6002e 100%);
+    color: white;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 59, 92, 0.25);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px var(--accent-glow), 0 8px 25px rgba(255, 59, 92, 0.3);
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .btn-ruby {
+    background: linear-gradient(135deg, var(--accent) 0%, #e6002e 100%);
+    color: white;
+    font-weight: 600;
+    padding: 0.65rem 1.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 59, 92, 0.2);
+  }
+
+  .btn-ruby::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .btn-ruby:hover {
+    box-shadow: 0 0 25px var(--accent-glow), 0 6px 20px rgba(255, 59, 92, 0.3);
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  .btn-ruby:hover::before {
+    left: 100%;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 59, 92, 0.2);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-subtle);
+    box-shadow: 0 0 20px rgba(255, 59, 92, 0.12);
+    transform: translateY(-3px) scale(1.03);
+  }
+
+  /* ── Badges ── */
+  .badge-active {
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(255, 59, 92, 0.12);
+    transition: all 0.3s ease;
+  }
+
+  .badge-active:hover {
+    background: rgba(255, 59, 92, 0.2);
+    transform: scale(1.05);
+  }
+
+  .badge-hot {
+    background: var(--accent);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    box-shadow: 0 0 15px var(--accent-glow);
+    animation: badge-pulse 2s ease-in-out infinite;
+  }
+
+  /* ── Nav link underline ── */
+  .nav-link-hover {
+    position: relative;
+  }
+
+  .nav-link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateX(-50%);
+    border-radius: 1px;
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  .nav-link-hover:hover::after {
+    width: 80%;
+  }
+
+  /* ── Heart Container (Heartlink spec — EXACT) ── */
+  .heart-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 3s ease-in-out infinite;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
+
+  .heart-container:hover {
+    animation-play-state: paused;
+    transform: scale(1.2) rotate(8deg);
+    filter: drop-shadow(0 0 35px var(--accent)) drop-shadow(0 0 80px rgba(255, 59, 92, 0.3));
+  }
+
+  /* ── Emotion Floating Hearts ── */
+  .emotion-float {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    animation: emotion-rise 3s ease-out forwards;
+    font-size: 1.5rem;
+  }
+
+  /* ── Hover Magnetic Effect ── */
+  .hover-magnetic {
+    transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .hover-magnetic:hover {
+    transform: translateY(-4px) scale(1.05);
+  }
+
+  /* ── Hover Glow Icon ── */
+  .hover-glow-icon {
+    transition: all 0.35s ease;
+  }
+
+  .hover-glow-icon:hover {
+    filter: drop-shadow(0 0 10px var(--accent));
+    transform: scale(1.15) rotate(5deg);
+  }
+
+  /* ── Hover Tilt Card ── */
+  .hover-tilt {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+  }
+
+  .hover-tilt:hover {
+    transform: perspective(800px) rotateX(2deg) rotateY(-3deg) translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 59, 92, 0.1);
+  }
+
+  /* ── Animations ── */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .animate-float-delay {
+    animation: float 3.5s ease-in-out infinite 0.5s;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2.5s ease-in-out infinite alternate;
+  }
+
+  .animate-orbit {
+    animation: orbit 10s linear infinite;
+  }
+
+  .animate-orbit-reverse {
+    animation: orbit-reverse 14s linear infinite;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 2s ease-in-out infinite;
+  }
+
+  .animate-bounce-soft {
+    animation: bounce-soft 2s ease-in-out infinite;
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 59, 92, 0.15);
+  }
+
+  100% {
+    box-shadow: 0 0 60px rgba(255, 59, 92, 0.35);
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.7) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3) rotate(180deg);
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(140px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(140px) rotate(-360deg);
+  }
+}
+
+@keyframes orbit-reverse {
+  0% {
+    transform: rotate(0deg) translateX(170px) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg) translateX(170px) rotate(360deg);
+  }
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.15);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.15);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-5deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes bounce-soft {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes emotion-rise {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: translateY(-80px) scale(1.2) rotate(15deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-180px) scale(0.5) rotate(30deg);
+  }
+}
+
+@keyframes shimmer-text {
+
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes badge-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  50% {
+    box-shadow: 0 0 25px var(--accent-glow), 0 0 50px rgba(255, 59, 92, 0.15);
+  }
+}
+
+/* ── Form Inputs ── */
+.input-dark {
+  width: 100%;
+  background: rgba(18, 12, 16, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  color: white;
+  font-size: 0.875rem;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.input-dark::placeholder {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.input-dark:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim), 0 0 15px rgba(255, 59, 92, 0.1);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
