@@ -1,16 +1,36 @@
-# React + Vite
+# Campus Cupids
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project setup for "Campus Cupids" hackathon project.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.  **Install Dependencies** (if not already done):
+    ```bash
+    npm install
+    ```
 
-## React Compiler
+2.  **Firebase Setup**:
+    -   Go to [Firebase Console](https://console.firebase.google.com/).
+    -   Create a new project.
+    -   Enable **Authentication** (Google Sign-in).
+    -   Enable **Firestore Database**.
+    -   Copy your config keys into `src/lib/firebase.js`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
 
-## Expanding the ESLint configuration
+## Project Structure
+-   `src/components`: UI components.
+-   `src/pages`: Main application pages.
+-   `src/context`: React Context (Auth).
+-   `src/lib`: Configuration files.
+-   `active-users.json` (mock data if needed).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deploy
+To deploy your app to Firebase Hosting:
+```bash
+npm run build
+firebase deploy
+```
