@@ -1,5 +1,8 @@
 # Campus Cupids
 
+
+[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge&logo=firebase)](https://campus-cupids-135da.web.app)
+
 Project setup for "Campus Cupids" hackathon project.
 
 ## Getting Started
